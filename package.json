@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/DEFRA/ivory-back-office/issues"
   },
-  "homepage": "https://github.com/DEFRA/ivory-back-office#readme"
+  "homepage": "https://github.com/DEFRA/ivory-back-office#readme",
+  "dependencies": {
+    "ivory": "git+https://github.com/DEFRA/ivory.git#master"
+  },
+  "devDependencies": {
+    "standard": "13.1.0"
+  }
 }
