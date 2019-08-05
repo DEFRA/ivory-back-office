@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/DEFRA/ivory-back-office#readme",
   "dependencies": {
-    "ivory": "git+https://github.com/DEFRA/ivory-shared.git#master"
+    "ivory-shared": "git+https://github.com/DEFRA/ivory-shared.git#master"
   },
   "devDependencies": {
     "standard": "13.1.0"
