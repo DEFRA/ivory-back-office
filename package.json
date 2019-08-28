@@ -20,7 +20,7 @@
   "dependencies": {
     "@hapi/hapi": "18.3.1",
     "dotenv": "^8.0.0",
-    "ivory-shared": "git+https://github.com/DEFRA/ivory-shared.git#master"
+    "ivory-shared": "git+https://github.com/DEFRA/ivory-shared.git"
   },
   "devDependencies": {
     "standard": "13.1.0"
