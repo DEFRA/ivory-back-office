@@ -23,6 +23,6 @@
     "ivory-shared": "git+https://github.com/DEFRA/ivory-shared.git#master"
   },
   "devDependencies": {
-    "standard": "14.0.2"
+    "standard": "14.1.0"
   }
 }
