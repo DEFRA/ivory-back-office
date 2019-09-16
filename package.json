@@ -18,11 +18,11 @@
   },
   "homepage": "https://github.com/DEFRA/ivory-back-office#readme",
   "dependencies": {
-    "@hapi/hapi": "18.3.2",
+    "@hapi/hapi": "18.4.0",
     "dotenv": "^8.1.0",
     "ivory-shared": "git+https://github.com/DEFRA/ivory-shared.git#master"
   },
   "devDependencies": {
-    "standard": "14.2.0"
+    "standard": "14.3.0"
   }
 }
