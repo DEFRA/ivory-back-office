@@ -23,9 +23,9 @@
   "dependencies": {
     "@hapi/hapi": "18.4.0",
     "dotenv": "^8.2.0",
-    "govuk-frontend": "2.13.0",
+    "govuk-frontend": "3.3.0",
     "ivory-shared": "git+https://github.com/DEFRA/ivory-shared.git#master",
-    "node-sass": "4.12.0"
+    "node-sass": "4.13.0"
   },
   "devDependencies": {
     "standard": "14.3.1"
