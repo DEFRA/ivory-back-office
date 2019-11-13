@@ -59,8 +59,7 @@
     "node-sass": "4.13.0",
     "notifications-node-client": "^4.7.0",
     "nunjucks": "3.2.0",
-    "require-all": "^3.0.0",
-    "sharp": "^0.23.2"
+    "require-all": "^3.0.0"
   },
   "devDependencies": {
     "@hapi/code": "^7.0.0",
