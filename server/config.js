@@ -37,12 +37,6 @@ const schema = Joi.object({
   redisPort: Joi.when('redisEnabled', { is: true, then: Joi.number().required() }),
   redisHost: Joi.when('redisEnabled', { is: true, then: Joi.string().required() }),
 
-  // Payment
-  paymentEnabled: Joi.bool().default(true),
-  paymentUrl: Joi.when('paymentEnabled', { is: true, then: Joi.string().uri().required() }),
-  paymentKey: Joi.when('paymentEnabled', { is: true, then: Joi.string().required() }),
-  paymentAmount: Joi.when('paymentEnabled', { is: true, then: Joi.number().integer().min(1).required() }),
-
   // Address lookup
   addressLookUpEnabled: Joi.bool().default(true),
   addressLookUpUri: Joi.when('addressLookUpEnabled', { is: true, then: Joi.string().uri().required() }),
@@ -67,11 +61,6 @@ const schema = Joi.object({
   s3ApiVersion: Joi.when('s3Enabled', { is: true, then: Joi.string().required() }),
   s3Bucket: Joi.when('s3Enabled', { is: true, then: Joi.string().required() }),
 
-  // Photo upload
-  photoUploadPhotoMaxMb: Joi.number().min(1).max(20).default(10),
-  photoUploadPhotoMinKb: Joi.number().min(1).max(50).default(50),
-  photoUploadPayloadMaxBytes: Joi.number().min(50 * 1024).max(20 * 1024 * 1024).default(10 * 1024 * 1024),
-
   // Google Analytics
   googleAnalyticsId: Joi.string(),
 
@@ -95,12 +84,6 @@ const config = {
   redisEnabled: process.env.REDIS_ENABLED,
   redisPort: process.env.REDIS_PORT,
   redisHost: process.env.REDIS_HOST,
-
-  // Payment
-  paymentEnabled: process.env.PAYMENT_ENABLED,
-  paymentUrl: process.env.PAYMENT_URL,
-  paymentKey: process.env.PAYMENT_KEY,
-  paymentAmount: process.env.PAYMENT_AMOUNT,
 
   // Logging
   logLevel: process.env.LOG_LEVEL,
@@ -133,11 +116,6 @@ const config = {
   s3ApiVersion: process.env.AWS_S3_APIVERSION,
   s3Bucket: process.env.AWS_S3_BUCKET,
 
-  // Photo upload
-  photoUploadPhotoMaxMb: process.env.PHOTO_UPLOAD_PHOTO_MAX_MB,
-  photoUploadPhotoMinKb: process.env.PHOTO_UPLOAD_PHOTO_MIN_KB,
-  photoUploadPayloadMaxBytes: process.env.PHOTO_UPLOAD_PAYLOAD_MAX_BYTES,
-
   // Google Analytics
   googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID,
 
@@ -157,14 +135,6 @@ if (error) {
 
 // Add reference data within config
 value.loggingLevels = { DEBUG, INFO, ERROR }
-
-// Add photo upload config
-value.photoSmallMaxWidth = 200
-value.photoSmallMaxHeight = 200
-value.photoSmallPrefix = '200x200.'
-value.photoMediumMaxWidth = 400
-value.photoMediumMaxHeight = 400
-value.photoMediumPrefix = '400x400.'
 
 // Add some helper props to the validated config
 value.isDev = value.env === DEVELOPMENT
