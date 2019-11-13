@@ -1,0 +1,16 @@
+  # =====================
+  # ===== Main flow =====
+  # =====================
+
+  home:
+    path: "/"
+    next: registrations
+    tags:
+      - always
+
+  registrations:
+    path: "/registrations"
+    pageHeading: Registrations
+    view: registrations/registrations
+
+
