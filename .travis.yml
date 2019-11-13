@@ -12,9 +12,9 @@ after_script:
   - npm install -g codeclimate-test-reporter
   - codeclimate-test-reporter < lcov.info
 
-#addons:
-#  code_climate:
-#    repo_token: e4a3e6bb706354b24daba0643d7845497977f12159426391d59ea10ae7f86942
+addons:
+  code_climate:
+    repo_token: 9ad8c0d0f2fe3e94e10f2815198573c0f7fc51a30daeb6f2d0320480a4ef4bdc
 
 env:
   - SERVICE_NAME=My Demo Back office
