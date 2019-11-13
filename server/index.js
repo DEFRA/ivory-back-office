@@ -1,37 +1,118 @@
-
-const dotenv = require('dotenv')
-dotenv.config()
-
-const DEFAULT_HOST = 'localhost'
-const DEFAULT_PORT = 3020
-
 const hapi = require('@hapi/hapi')
+const { name, version } = require('../package')
+const { Persistence } = require('ivory-shared')
+const { SyncRegistration } = require('ivory-data-mapping')
+const { logger } = require('defra-logging-facade')
+const config = require('./config')
+
+// Inject config into common modules and data mapping
+require('ivory-common-modules').utils.setConfig(config)
+// ToDo: Add config to data mapping when developed
+// require('ivory-data-mapping').utils.setConfig(config)
+
+const serverOptions = {
+  port: config.port,
+  routes: {
+    validate: {
+      options: {
+        abortEarly: false
+      }
+    }
+  }
+}
+
+if (config.redisEnabled) {
+  serverOptions.cache = {
+    provider: {
+      constructor: require('@hapi/catbox-redis'),
+      options: {
+        partition: 'hapi-cache',
+        port: config.redisPort,
+        host: config.redisHost
+      }
+    }
+  }
+}
+
+async function registerPlugins (server) {
+  await server.register([
+    require('@hapi/inert'),
+    require('./plugins/views'),
+    require('./plugins/router'),
+    require('./plugins/robots'),
+    require('./plugins/cache'),
+    require('./plugins/navigation'),
+    require('./plugins/error-pages')
+  ])
+
+  // Register the crumb plugin only if not running in test
+  if (!config.isTest) {
+    await server.register([
+      require('./plugins/crumb'),
+      require('./plugins/logging')
+    ])
+  }
+
+  // Register the dev-only plugins
+  if (config.isDev) {
+    await server.register([
+      require('blipp')
+    ])
+  }
+}
+
+function startHandler (server) {
+  logger.info(`${name} (${version}) is starting...`)
+  logger.info(`Log level: ${config.logLevel}`)
+
+  // listen on SIGTERM signal and gracefully stop the server
+  process.on('SIGTERM', function () {
+    logger.info('Received SIGTERM scheduling shutdown...')
+    logger.info(`${name} (${version}) is stopping...`)
+
+    server.stop({ timeout: 10000 }).then(function (err) {
+      logger.info('Shutdown complete')
+      process.exit((err) ? 1 : 0)
+    })
+  })
+}
 
 async function createServer () {
-// Create a server instance
-  const server = hapi.server({
-    host: process.env.HOST || DEFAULT_HOST,
-    port: process.env.PORT || DEFAULT_PORT,
-    app: {}
-  })
+  // Create the hapi server
+  const server = hapi.server(serverOptions)
 
-  // Add a route
-  server.route({
-    method: 'GET',
-    path: '/',
-    handler: function (request, h) {
-      return 'Ivory Back Office: Place holder page'
+  // Add a reference to the server in the config
+  config.server = server
+
+  // Add a reference to the config in the server
+  server.app.config = config
+
+  // Load reference data
+  if (config.serviceApiEnabled) {
+    // Add protocol to service api url if it doesn't exist already
+    if (!config.serviceApi.includes('://')) {
+      config.serviceApi = `${server.info.protocol}://${config.serviceApi}`
     }
-  })
+    const persistence = new Persistence({ path: `${config.serviceApi}/reference-data` })
+    config.referenceData = await persistence.restore()
 
-  // Start the server
-  await server.start((err) => {
-    if (err) {
-      throw err
-    }
+    // Register the service api
+    SyncRegistration.serviceApi = config.serviceApi
+  } else {
+    config.referenceData = {}
+  }
 
-    console.log('Server running at:', server.info.uri)
-  })
+  // Register the plugins
+  await registerPlugins(server)
+
+  server.events.on('start', () => startHandler(server))
+
+  // Add a reference to the google analytics ID
+  if (config.googleAnalyticsId) {
+    server.app.googleAnalyticsId = config.googleAnalyticsId
+  } else {
+    logger.warn('GOOGLE_ANALYTICS_ID not set')
+  }
 
   return server
 }
