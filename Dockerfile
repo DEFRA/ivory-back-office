@@ -27,6 +27,6 @@ COPY ./server ./server
 
 COPY --chown=node:node . .
 
-EXPOSE 3000
+EXPOSE 3020
 
 ENTRYPOINT [ "node", "index.js" ]
