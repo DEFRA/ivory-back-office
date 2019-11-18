@@ -4,12 +4,14 @@
 
   home:
     path: "/"
+    handlers: home/home.handlers.js
     next: registrations
     tags:
       - always
 
   registrations:
     path: "/registrations"
+    handlers: registrations/registrations.handlers.js
     pageHeading: Registrations
     view: registrations/registrations
 

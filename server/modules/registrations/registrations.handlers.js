@@ -1,5 +1,4 @@
 // const { Registration } = require('ivory-data-mapping').cache
-const { getRoutes } = require('../../flow')
 
 class RegistrationsHandlers extends require('ivory-common-modules').handlers {
   // Overrides parent class handleGet
@@ -10,8 +9,4 @@ class RegistrationsHandlers extends require('ivory-common-modules').handlers {
   }
 }
 
-const handlers = new RegistrationsHandlers()
-
-const routes = getRoutes.bind(handlers)('registrations')
-
-module.exports = handlers.routes(routes)
+module.exports = RegistrationsHandlers
