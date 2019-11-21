@@ -1,4 +1,4 @@
-const { flow } = require('../flow')
+const { flow } = require('ivory-common-modules').plugins.routeFlow
 const { errorPages } = require('ivory-common-modules').plugins
 
 module.exports = {
