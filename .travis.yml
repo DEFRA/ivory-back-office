@@ -16,6 +16,3 @@ addons:
   code_climate:
     repo_token: 9ad8c0d0f2fe3e94e10f2815198573c0f7fc51a30daeb6f2d0320480a4ef4bdc
 
-env:
-  - SERVICE_NAME=My Demo Back office
-    COOKIE_PASSWORD=7044a01fe9e9e4960eb9be8c75bc61ca6360b2adb0cd84673f51da0e16b65249c04f5f358b4bfbcc03b64cce6baa95172148b68a5ac354d8153b60804ec09943
