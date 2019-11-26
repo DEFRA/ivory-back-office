@@ -1,18 +1,30 @@
-  # =====================
-  # ===== Main flow =====
-  # =====================
+# =====================
+# ===== Main flow =====
+# =====================
 
-  home:
-    path: "/"
-    handlers: home/home.handlers.js
-    next: registrations
-    tags:
-      - always
+home:
+  path: "/"
+  handlers: home/home.handlers.js
+  next: registrations
+  tags:
+    - always
 
-  registrations:
-    path: "/registrations"
-    handlers: registrations/registrations.handlers.js
-    pageHeading: Registrations
-    view: registrations/registrations
+registrations:
+  path: "/registrations"
+  handlers: registrations/registrations.handlers.js
+  pageHeading: Registrations
+  view: registrations/registrations
+
+# ======================
+# ==== Support flow ====
+# ======================
+
+version:
+  path: "/version"
+  handlers: version/version.handlers
+  pageHeading: Version
+  view: version/version
+  tags:
+    - always
 
 
