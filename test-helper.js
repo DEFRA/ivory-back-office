@@ -8,7 +8,6 @@ const dotenv = require('dotenv')
 process.env.SERVICE_NAME = 'Demo Service'
 process.env.COOKIE_PASSWORD = '6eea0a1e5a8a4432810022b3d1d6054cf6716c3952bc5cbd71314397eaf0666bfa928ecc50232b49041299de6872643e6ea3f84b95b11fc78b1bbf44f648d92a'
 process.env.ADDRESS_LOOKUP_ENABLED = false
-process.env.AIRBRAKE_ENABLED = false
 process.env.REDIS_ENABLED = false
 process.env.SERVICE_API_ENABLED = false
 process.env.PAYMENT_ENABLED = false
@@ -20,6 +19,7 @@ const config = require('./server/config')
 const { logger } = require('defra-logging-facade')
 const { utils } = require('defra-hapi-utils')
 const { SyncRegistration, cache } = require('ivory-data-mapping')
+const flowPlugin = require('./server/plugins/flow')
 
 // Suppress MaxListenersExceededWarning within tests
 require('events').EventEmitter.defaultMaxListeners = Infinity
@@ -45,6 +45,19 @@ module.exports = class TestHelper {
       if (stubCache) {
         TestHelper.stubCache(context)
       }
+
+      // Stub addRoute to add only the tested handlers derived from the test filename
+      const { Flow } = utils.getNestedVal(flowPlugin, 'plugin.test')
+      const handler = `${testFile.split('.')[0]}.handlers`
+      const originalAddRoute = Flow.prototype.addRoute
+      context.sandbox.stub(Flow.prototype, 'addRoute').value(async function (node, server) {
+        if (handler.endsWith(node.handlers)) {
+          return originalAddRoute.call(this, node, server)
+        }
+      })
+
+      // const routes = TestHelper.getFile(testFile).replace('.test.js', '.js').substr(1)
+      // context.sandbox.stub(flowPlugin, 'options').value({ routes })
 
       context.server = await require('./server')()
     })
