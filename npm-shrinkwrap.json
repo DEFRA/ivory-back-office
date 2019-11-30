@@ -1823,7 +1823,7 @@
       }
     },
     "defra-hapi-modules": {
-      "version": "git+https://github.com/DEFRA/defra-hapi-modules.git#fc1eef11e1524231da9f24d5f162c5e86ddb37bf",
+      "version": "git+https://github.com/DEFRA/defra-hapi-modules.git#0947cb0260811ee74eb3486b05b62ff5fcb7adb6",
       "from": "git+https://github.com/DEFRA/defra-hapi-modules.git#master",
       "requires": {
         "@hapi/hoek": "^8.5.0",
@@ -2458,7 +2458,7 @@
           }
         },
         "defra-hapi-utils": {
-          "version": "git+https://github.com/DEFRA/defra-hapi-utils.git#57792cf3b9b0ce1e621ef60a49e111e782683032",
+          "version": "git+https://github.com/DEFRA/defra-hapi-utils.git#6a7f977fcbaa33b9d40aa2ff991188351ce41c0f",
           "from": "git+https://github.com/DEFRA/defra-hapi-utils.git#master",
           "requires": {
             "@hapi/hoek": "^8.5.0",
@@ -8235,7 +8235,7 @@
       }
     },
     "defra-hapi-utils": {
-      "version": "git+https://github.com/DEFRA/defra-hapi-utils.git#57792cf3b9b0ce1e621ef60a49e111e782683032",
+      "version": "git+https://github.com/DEFRA/defra-hapi-utils.git#6a7f977fcbaa33b9d40aa2ff991188351ce41c0f",
       "from": "git+https://github.com/DEFRA/defra-hapi-utils.git#master",
       "requires": {
         "@hapi/hoek": "^8.5.0",
@@ -13648,7 +13648,7 @@
       "integrity": "sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo="
     },
     "ivory-data-mapping": {
-      "version": "git+https://github.com/DEFRA/ivory-data-mapping.git#901829d0d9efd52c3838cd9cf92b308ec4ffc0b4",
+      "version": "git+https://github.com/DEFRA/ivory-data-mapping.git#153a17cdd7b39244f4284f4b7b3295df561bb941",
       "from": "git+https://github.com/DEFRA/ivory-data-mapping.git#master",
       "requires": {
         "@hapi/joi": "^16.1.8",
@@ -14254,7 +14254,7 @@
           }
         },
         "defra-hapi-utils": {
-          "version": "git+https://github.com/DEFRA/defra-hapi-utils.git#57792cf3b9b0ce1e621ef60a49e111e782683032",
+          "version": "git+https://github.com/DEFRA/defra-hapi-utils.git#6a7f977fcbaa33b9d40aa2ff991188351ce41c0f",
           "from": "git+https://github.com/DEFRA/defra-hapi-utils.git#master",
           "requires": {
             "@hapi/hoek": "^8.5.0",
