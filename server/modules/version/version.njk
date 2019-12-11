@@ -1,12 +1,1 @@
-{% extends 'layout.njk' %}
-
-{% from "version/macro.njk" import defraVersion %}
-
-{% block content %}
-
-  {{ defraVersion({
-    services: viewData.services,
-    renderTimestamp: viewData.renderTimestamp
-  }) }}
-
-{% endblock %}
+{% extends 'version.njk' %}
