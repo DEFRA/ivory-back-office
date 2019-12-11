@@ -15,16 +15,4 @@ registrations:
   pageHeading: Registrations
   view: registrations/registrations
 
-# ======================
-# ==== Support flow ====
-# ======================
-
-version:
-  path: "/version"
-  handlers: version/version.handlers
-  pageHeading: Version
-  view: version/version
-  tags:
-    - always
-
 
