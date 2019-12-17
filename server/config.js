@@ -61,6 +61,11 @@ const schema = Joi.object({
   s3ApiVersion: Joi.when('s3Enabled', { is: true, then: Joi.string().required() }),
   s3Bucket: Joi.when('s3Enabled', { is: true, then: Joi.string().required() }),
 
+  // Photo upload
+  photoUploadPhotoMaxMb: Joi.number().min(1).max(20).default(10),
+  photoUploadPhotoMinKb: Joi.number().min(1).max(50).default(1),
+  photoUploadPayloadMaxBytes: Joi.number().min(50 * 1024).max(20 * 1024 * 1024).default(10 * 1024 * 1024),
+
   // Google Analytics
   googleAnalyticsId: Joi.string(),
 
@@ -115,6 +120,11 @@ const config = {
   s3ApiVersion: process.env.AWS_S3_APIVERSION,
   s3Bucket: process.env.AWS_S3_BUCKET,
 
+  // Photo upload
+  photoUploadPhotoMaxMb: process.env.PHOTO_UPLOAD_PHOTO_MAX_MB,
+  photoUploadPhotoMinKb: process.env.PHOTO_UPLOAD_PHOTO_MIN_KB,
+  photoUploadPayloadMaxBytes: process.env.PHOTO_UPLOAD_PAYLOAD_MAX_BYTES,
+
   // Google Analytics
   googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID,
 
@@ -134,6 +144,14 @@ if (error) {
 
 // Add reference data within config
 value.loggingLevels = { DEBUG, INFO, ERROR }
+
+// Add photo upload config
+value.photoSmallMaxWidth = 200
+value.photoSmallMaxHeight = 200
+value.photoSmallPrefix = 'small'
+value.photoMediumMaxWidth = 400
+value.photoMediumMaxHeight = 400
+value.photoMediumPrefix = 'medium'
 
 // Add some helper props to the validated config
 value.isDev = value.env === DEVELOPMENT
