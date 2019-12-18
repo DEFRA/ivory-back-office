@@ -12,7 +12,7 @@ home:
 registrations:
   path: "/registrations"
   handlers: registrations/registrations.handlers
-  pageHeading: Registrations
+  title: Registrations
   view: registrations/registrations
 
 
