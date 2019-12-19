@@ -12,7 +12,7 @@ home:
 registrations:
   path: "/registrations"
   handlers: registrations/registrations.handlers
-  title: Registrations
+  title: Ivory registrations
   view: registrations/registrations
 
 
