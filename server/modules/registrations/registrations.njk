@@ -1,5 +1,14 @@
-{% extends 'two-thirds-layout.njk' %}
+{% extends 'layout.njk' %}
 
-{% block formContent %}
+{% from "components/table/macro.njk" import govukTable %}
+
+{% block content %}
+
+  <h1 id="defra-page-heading" class="govuk-heading-xl">{{ pageHeading }}</h1>
+
+  {{ govukTable({
+    head: viewData.head,
+    rows: viewData.rows
+  }) }}
 
 {% endblock %}
