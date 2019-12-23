@@ -15,4 +15,10 @@ registrations:
   title: Ivory registrations
   view: registrations/registrations
 
+registration-detail:
+  path: "/registrations/{registrationNumber}"
+  handlers: registration-detail/registration-detail.handlers
+  view: registration-detail/registration-detail
+  breadcrumbs: registrationsx
+
 

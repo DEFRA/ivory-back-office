@@ -7,15 +7,24 @@ class RegistrationsHandlers extends require('defra-hapi-handlers') {
     return Persistence.createDAO({ path: `${config.serviceApi}${path}` }).restore()
   }
 
+  async getItemTypes () {
+    const itemTypes = {}
+    // Populate item types object with key value pairs of shortName and display
+    const { itemType } = await this.load('/reference-data')
+    itemType.choices.forEach(({ shortName, display }) => {
+      itemTypes[shortName] = display
+    })
+
+    return itemTypes
+  }
+
   // Overrides parent class handleGet
   async handleGet (request, h, errors) {
     const registrations = await this.load('/full-registrations?status=submitted') || []
-    const referenceData = await this.load('/reference-data')
 
-    const itemTypes = {}
-    referenceData.itemType.choices.forEach(({ shortName, display }) => {
-      itemTypes[shortName] = display
-    })
+    const itemTypes = await this.getItemTypes()
+
+    const registrationDetailRoute = await this.getFlowNode('registration-detail')
 
     const head = [
       { text: 'Photo / registration number' },
@@ -28,11 +37,12 @@ class RegistrationsHandlers extends require('defra-hapi-handlers') {
       const { registrationNumber, item, submittedDate } = registration
       const { itemType, description, photos } = item
       const { filename } = photos[0]
+      const registrationDetailLink = registrationDetailRoute.path.replace('{registrationNumber}', registrationNumber)
 
       return [
         {
           html: `
-            <a href="item-detail/${registrationNumber}">
+            <a href="${registrationDetailLink}">
                 <img src="/photos/small/${filename}" alt="${description}" class="item-list-thumbnail" />
                 <br />
                 ${registrationNumber}

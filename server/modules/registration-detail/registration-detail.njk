@@ -1,0 +1,10 @@
+{% extends 'two-thirds-layout.njk' %}
+
+{% block formContent %}
+  {% from "summary-list/macro.njk" import govukSummaryList %}
+
+  {{ govukSummaryList({
+    rows: viewData.rows
+  }) }}
+
+{% endblock %}
