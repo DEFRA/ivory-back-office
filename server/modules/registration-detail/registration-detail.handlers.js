@@ -23,17 +23,14 @@ class RegistrationDetailHandlers extends require('defra-hapi-handlers') {
     return `${registrationNumber} - ${itemType}`
   }
 
-  async getNodeHeading (node, request) {
-    return node.handlers.getPageHeading(request)
-  }
-
   async getBreadcrumbs (request) {
-    const registrationNode = await this.getFlowNode('registrations')
-    const breadcrumb = {
-      text: await this.getNodeHeading(registrationNode, request),
-      href: registrationNode.path
-    }
-    return [breadcrumb, { text: await this.getPageHeading(request) }]
+    const { handlers, path } = await this.getFlowNode('registrations')
+    return [{
+      text: await handlers.getPageHeading(request),
+      href: path
+    }, {
+      text: await this.getPageHeading(request)
+    }]
   }
 
   // Overrides parent class handleGet
