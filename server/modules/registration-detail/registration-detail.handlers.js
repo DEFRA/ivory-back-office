@@ -59,6 +59,12 @@ class RegistrationDetailHandlers extends require('defra-hapi-handlers') {
       })
   }
 
+  getAddressLine ({ businessName, addressLine1, addressLine2, town, county, postcode }) {
+    return [businessName, addressLine1, addressLine2, town, county, postcode]
+      .filter((lineItem) => lineItem)
+      .join(', ')
+  }
+
   // Overrides parent class handleGet
   async handleGet (request, h, errors) {
     const { item = {}, agent = {}, owner = {}, submittedDate = '' } = await this.getRegistration(request) || {}
@@ -72,10 +78,10 @@ class RegistrationDetailHandlers extends require('defra-hapi-handlers') {
       [`${volumeExemptionLabel} explanation`]: volumeExemptionDescription,
       Agent: agent.fullName,
       'Agent\'s email': agent.email,
-      'Agent\'s address': agent.address,
+      'Agent\'s address': this.getAddressLine(agent.address || {}),
       Owner: owner.fullName,
       'Owner\'s email': owner.email,
-      'Owner\'s address': owner.address,
+      'Owner\'s address': this.getAddressLine(owner.address || {}),
       Submitted: moment(submittedDate).format('YYYY-MM-DD HH:mm')
     }
 
