@@ -7,6 +7,6 @@ module.exports = {
       const route = await flow('home')
       return h.redirect(route.path)
     },
-    errorViewLocation: 'errors'
+    view: 'errors/error'
   }
 }
