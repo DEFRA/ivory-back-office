@@ -36,14 +36,14 @@ class RegistrationsHandlers extends require('defra-hapi-handlers') {
     const rows = registrations.map((registration) => {
       const { registrationNumber, item, submittedDate } = registration
       const { itemType, description, photos } = item
-      const { filename } = photos[0]
+      const { filename, originalFilename } = photos[0]
       const registrationDetailLink = registrationDetailRoute.path.replace('{registrationNumber}', registrationNumber)
 
       return [
         {
           html: `
             <a href="${registrationDetailLink}">
-                <img src="/photos/small/${filename}" alt="${description}" class="item-list-thumbnail" />
+                <img src="/photos/small/${filename}" alt="${originalFilename}" class="item-list-thumbnail" />
                 <br />
                 ${registrationNumber}
             </a>
