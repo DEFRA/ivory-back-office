@@ -70,7 +70,7 @@ class RegistrationDetailHandlers extends require('defra-hapi-handlers') {
     const { item = {}, agent = {}, owner = {}, submittedDate = '' } = await this.getRegistration(request) || {}
     const { description, ageExemptionDescription, volumeExemptionDescription, photos = [] } = item
     const { ageExemptionLabel = '', volumeExemptionLabel = '' } = await this.getItemType(request, item.itemType)
-    const { filename } = photos.pop() || {}
+    const { filename, originalFilename } = photos.pop() || {}
 
     const details = {
       Description: description,
@@ -89,7 +89,7 @@ class RegistrationDetailHandlers extends require('defra-hapi-handlers') {
       rows: [
         {
           key: {
-            html: `<img class="item-detail-main govuk-!-margin-bottom-5" src="/photos/small/${filename}" alt="${description}">`
+            html: `<img class="item-detail-main govuk-!-margin-bottom-5" src="/photos/small/${filename}" alt="${originalFilename}">`
           }
         },
         ...this.buildRows(details)
