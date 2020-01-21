@@ -50,7 +50,9 @@ class RegistrationsHandlers extends require('defra-hapi-handlers') {
 `
         },
         { text: itemTypes[itemType] },
-        { text: description.length > 80 ? description : `${description} . . .` },
+        // ToDo: Possibly replace just truncating the description with replacing the rest of the description with ellipses if it exceeds 80 characters (see commented code below)
+        { text: description.substr(0, 80).trim() },
+        // { html: description.length > 80 ? `${description.substr(0, 80).trim()}&hellip;` : description },
         { text: moment(submittedDate).format('YYYY-MM-DD HH:mm') }
       ]
     })
