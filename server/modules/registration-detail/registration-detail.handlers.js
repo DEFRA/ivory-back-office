@@ -69,9 +69,10 @@ class RegistrationDetailHandlers extends require('defra-hapi-handlers') {
   async handleGet (request, h, errors) {
     const { item = {}, agent = {}, owner = {}, submittedDate = '' } = await this.getRegistration(request) || {}
     const { description, ageExemptionDescription, volumeExemptionDescription, photos = [] } = item
-    const { ageExemptionLabel = '', volumeExemptionLabel = '' } = await this.getItemType(request, item.itemType)
+    const { ageExemptionLabel = '', volumeExemptionLabel = '', display } = await this.getItemType(request, item.itemType)
 
     const details = {
+      'Item type': display,
       Description: description,
       [`${ageExemptionLabel} explanation`]: ageExemptionDescription,
       [`${volumeExemptionLabel} explanation`]: volumeExemptionDescription,
@@ -84,17 +85,21 @@ class RegistrationDetailHandlers extends require('defra-hapi-handlers') {
       Submitted: moment(submittedDate).format('YYYY-MM-DD HH:mm')
     }
 
-    const imageRows = photos.map(({ filename, originalFilename }) => {
-      return {
-        key: {
-          html: `<img class="item-detail-main govuk-!-margin-bottom-5" src="/photos/medium/${filename}" alt="${originalFilename}">`
-        }
-      }
-    })
+    const html = `
+        <ol class="govuk-list govuk-list--number">
+            ${photos.map((photo, index) => `
+            <li class="check-photo">
+                <img id="check-photo-img-${index + 1}" class="check-photo-img" src="/photos/medium/${photo.filename}" alt="${photo.originalFilename}">
+            </li>
+            `).join('\n')}
+        </ol>
+        `
+
+    const imageRow = { key: { html } }
 
     this.viewData = {
       rows: [
-        ...imageRows,
+        imageRow,
         ...this.buildRows(details)
       ]
     }
