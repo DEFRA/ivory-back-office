@@ -50,7 +50,7 @@ class RegistrationsHandlers extends require('defra-hapi-handlers') {
 `
         },
         { text: itemTypes[itemType] },
-        { text: description },
+        { text: description.length > 80 ? description : `${description} . . .` },
         { text: moment(submittedDate).format('YYYY-MM-DD HH:mm') }
       ]
     })
