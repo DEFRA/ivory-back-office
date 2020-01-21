@@ -33,29 +33,33 @@ class RegistrationsHandlers extends require('defra-hapi-handlers') {
       { text: 'Submitted' }
     ]
 
-    const rows = registrations.map((registration) => {
-      const { registrationNumber, item, submittedDate } = registration
-      const { itemType, description, photos } = item
-      const { filename, originalFilename } = photos[0]
-      const registrationDetailLink = registrationDetailRoute.path.replace('{registrationNumber}', registrationNumber)
+    const rows = registrations
+      // First sort by submitted date
+      .sort(({ submittedDate: first }, { submittedDate: second }) => first < second)
+    // Now map registration to row structure
+      .map((registration) => {
+        const { registrationNumber, item, submittedDate } = registration
+        const { itemType, description, photos } = item
+        const { filename, originalFilename } = photos[0]
+        const registrationDetailLink = registrationDetailRoute.path.replace('{registrationNumber}', registrationNumber)
 
-      return [
-        {
-          html: `
+        return [
+          {
+            html: `
             <a href="${registrationDetailLink}">
                 <img src="/photos/small/${filename}" alt="${originalFilename}" class="item-list-thumbnail" />
                 <br />
                 ${registrationNumber}
             </a>
 `
-        },
-        { text: itemTypes[itemType] },
-        // ToDo: Possibly replace just truncating the description with replacing the rest of the description with ellipses if it exceeds 80 characters (see commented code below)
-        { text: description.substr(0, 80).trim() },
-        // { html: description.length > 80 ? `${description.substr(0, 80).trim()}&hellip;` : description },
-        { text: moment(submittedDate).format('YYYY-MM-DD HH:mm') }
-      ]
-    })
+          },
+          { text: itemTypes[itemType] },
+          // ToDo: Possibly replace just truncating the description with replacing the rest of the description with ellipses if it exceeds 80 characters (see commented code below)
+          { text: description.substr(0, 80).trim() },
+          // { html: description.length > 80 ? `${description.substr(0, 80).trim()}&hellip;` : description },
+          { text: moment(submittedDate).format('YYYY-MM-DD HH:mm') }
+        ]
+      })
 
     this.viewData = { head, rows }
     return super.handleGet(request, h, errors)
