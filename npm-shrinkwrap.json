@@ -3416,11 +3416,6 @@
             "path-exists": "^3.0.0"
           }
         },
-        "lodash": {
-          "version": "4.17.15",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
-          "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
-        },
         "lodash.clonedeep": {
           "version": "4.5.0",
           "resolved": "https://registry.npmjs.org/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz",
@@ -6479,11 +6474,6 @@
             "p-locate": "^2.0.0",
             "path-exists": "^3.0.0"
           }
-        },
-        "lodash": {
-          "version": "4.17.15",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
-          "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
         },
         "lodash.clonedeep": {
           "version": "4.5.0",
@@ -9816,11 +9806,6 @@
             "p-locate": "^2.0.0",
             "path-exists": "^3.0.0"
           }
-        },
-        "lodash": {
-          "version": "4.17.15",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
-          "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
         },
         "lodash.clonedeep": {
           "version": "4.5.0",
@@ -13832,11 +13817,6 @@
                 "path-exists": "^3.0.0"
               }
             },
-            "lodash": {
-              "version": "4.17.15",
-              "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
-              "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
-            },
             "lodash.clonedeep": {
               "version": "4.5.0",
               "resolved": "https://registry.npmjs.org/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz",
@@ -16118,11 +16098,6 @@
             "p-locate": "^2.0.0",
             "path-exists": "^3.0.0"
           }
-        },
-        "lodash": {
-          "version": "4.17.15",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
-          "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
         },
         "lodash.get": {
           "version": "4.4.2",
@@ -20192,11 +20167,6 @@
                 "p-locate": "^3.0.0",
                 "path-exists": "^3.0.0"
               }
-            },
-            "lodash": {
-              "version": "4.17.15",
-              "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
-              "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
             },
             "lodash.sortby": {
               "version": "4.7.0",
@@ -24439,11 +24409,6 @@
             "p-locate": "^2.0.0",
             "path-exists": "^3.0.0"
           }
-        },
-        "lodash": {
-          "version": "4.17.15",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
-          "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
         },
         "lodash.clonedeep": {
           "version": "4.5.0",
@@ -29473,11 +29438,6 @@
             "path-exists": "^3.0.0"
           }
         },
-        "lodash": {
-          "version": "4.17.15",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
-          "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
-        },
         "lolex": {
           "version": "4.2.0",
           "resolved": "https://registry.npmjs.org/lolex/-/lolex-4.2.0.tgz",
@@ -32800,11 +32760,6 @@
             "p-locate": "^2.0.0",
             "path-exists": "^3.0.0"
           }
-        },
-        "lodash": {
-          "version": "4.17.15",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
-          "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
         },
         "lolex": {
           "version": "4.2.0",
@@ -37018,11 +36973,6 @@
                 "path-exists": "^3.0.0"
               }
             },
-            "lodash": {
-              "version": "4.17.15",
-              "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
-              "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
-            },
             "lodash.clonedeep": {
               "version": "4.5.0",
               "resolved": "https://registry.npmjs.org/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz",
@@ -39370,11 +39320,6 @@
             "path-exists": "^3.0.0"
           }
         },
-        "lodash": {
-          "version": "4.17.15",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
-          "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
-        },
         "lodash.clonedeep": {
           "version": "4.5.0",
           "resolved": "https://registry.npmjs.org/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz",
@@ -40780,9 +40725,9 @@
       }
     },
     "lodash": {
-      "version": "4.17.15",
-      "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz",
-      "integrity": "sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A=="
+      "version": "4.17.19",
+      "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.19.tgz",
+      "integrity": "sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ=="
     },
     "lodash.clonedeep": {
       "version": "4.5.0",
